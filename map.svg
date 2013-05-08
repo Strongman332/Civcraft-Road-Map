@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" onload="init(evt)" width="1024" height="600" preserveAspectRatio="xMidYMid meet" zoomAndPan="magnify" contentScriptType="application/ecmascript" contentStyleType="text/css"><style type="text/css" xml:space="preserve">
+  			
+			 		.territory:hover{
+						fill:           #22aa44;
+					}
+						.compass{
+							fill:			#fff;
+							stroke:			#000;
+							stroke-width:	1.5;
+						}
+				 		.button{
+							fill:           	#225EA8;
+						stroke:   			#0C2C84;
+						stroke-miterlimit:	6;
+						stroke-linecap:		round;
+					}
+					.button:hover{
+						stroke-width:   	2;
+					}
+					.plus-minus{
+						fill:	#fff;
+						pointer-events: none;
+					}
+
+				  .compass{
+						fill:  #fff;
+						stroke:  #000;
+						stroke-width:  1.5;
+					}
+
+				  .button{
+						fill:  #225EA8;
+						stroke:  #0C2C84;
+						stroke-miterlimit:	6;
+						stroke-linecap:  round;
+					}
+				  .button:hover{
+						stroke-width:  2;
+					}
+				  .plus-minus{
+						fill:  #fff;
+						pointer-events: none;
+					}
+
+					text.title {
+						fill: black;
+						font-weight: bold;
+						font-size: 24px;
+						font-family: sans-serif;
+						text-anchor: middle;
+					}
+
+					text.link {
+						text-decoration: underline;
+						fill: Black;
+						font-weight: bold;
+						font-size: 14px;
+						font-family: serif;
+						text-anchor: middle;
+					}
+
+					circle.Town {
+						stroke: black;
+						stroke-width: 1.5;
+						fill: lightcyan;
+					}
+
+					circle.Town_Uninhabited {
+						stroke: #8b8989;
+						stroke-width: 1.5;
+						stroke-dasharray: 6,2;
+						fill: white;
+					}
+
+					text.Town {
+						fill: black;
+						font-size: 17px;
+						font-weight: bold;
+						text-anchor: middle;
+					}
+
+					text.Town_abandoned {
+						fill: #cdc9c9;
+						font-size: 17px;
+						font-weight: bold;
+						text-anchor: middle;
+						text-decoration: line-through;
+					}
+
+					text.Town_small {
+						fill: black;
+						font-size: 15px;
+						font-weight: bold;
+						text-anchor: middle;
+					}
+
+					text.Town_abandoned_small {
+						fill: #cdc9c9;
+						font-size: 15px;
+						font-weight: bold;
+						text-anchor: middle;
+					}
+
+					text.Town_name {
+						fill: Black;
+						font-size: 17px;
+						font-weight: bold;
+					}
+
+					text.compass {
+						fill: black;
+						font-size: 28px;
+						font-weight: bold;
+						font-variant: small-caps;
+						text-anchor: middle;
+					}
+
+					polygon.compass {
+						fill: cyan;
+						stroke: black;
+						stroke-width: 2;
+					}
+
+					polygon.ocean {
+						fill:#D6ECF2;
+						fill-opacity:1;
+						stroke: #D6ECF2;
+						stroke-width: 2;
+						stroke-opacity: 1;
+					}
+
+					polygon.island {
+						stroke: white;
+						stroke-width: 2;
+						stroke-opacity: 1;
+						fill: white;
+						fill-opacity:1;
+					}
+
+					polygon.compass_north {
+						fill: cyan;
+						stroke: black;
+						stroke-width: 1;
+					}
+
+					text.scale {
+						fill: black;
+						font-size: 12px;
+						font-weight: bold;
+					}
+
+					text.scale_right {
+						fill: black;
+						font-size: 12px;
+						font-weight: bold;
+						text-anchor: end;
+					}
+
+					rect.scale_light {
+						fill: white;
+						stroke: black;
+						stroke-width: 1;
+					}
+
+					rect.scale_dark {
+						fill: cyan;
+						stroke: black;
+						stroke-width: 1;
+					}
+
+					polyline.road {
+						fill:none;
+
+						stroke: #f6f;
+						stroke-width: 3;
+					}
+
+					polyline.road_unofficial {
+						fill:none;
+						stroke: #770;
+						stroke-width: 3;
+						stroke-dasharray: 8, 1, 4, 1;
+					}
+
+					polyline.road_historic {
+						fill:none;
+						stroke: #ADA96E;
+						stroke-width: 1.25;
+						stroke-dasharray: 4, 1, 4, 1;
+					}
+
+					polyline.rail {
+						fill:none;
+						stroke-width: 6;
+					}
+
+
+					polyline.river {
+						fill:none;
+						stroke:#D6ECF2;
+						stroke-width: 2;
+					}
+
+					polyline.canal {
+						fill:none;
+						stroke:#008080;
+						stroke-width: 3;
+					}
+
+					rect.background {
+						fill: none;
+						stroke: gray;
+						stroke-width: 1;
+					}
+
+					text.range {
+						fill: gray;
+						font-size: 25px;
+						text-anchor: end;
+					}
+
+					text.range_v {
+						fill: gray;
+						font-size: 25px;
+						text-anchor: end;
+					}
+
+					text.griefed {
+						font-size:32px;
+						font-weight:bold;
+						text-anchor:middle;
+						fill: #f30;
+					}
+
+					circle.griefed {
+						stroke: #f30;
+						stroke-width: 4;
+						fill: none;
+					}
+
+					circle.map {
+						stroke: none;
+						stroke-width: 1.5;
+						stroke-opacity: 1;
+						fill: #D6ECF2;
+						fill-opacity:1;
+					}
+
+					circle.mapborder {
+						stroke: lightblue;
+						stroke-width: 1.5;
+						stroke-opacity: 1;
+						fill: none;
+						fill-opacity:1;
+					}
+
+					text.roadcrew_sign {
+						fill:black;
+						font-weight:bold;
+						font-size:48px;
+						font-family:sans-serif;
+						text-anchor:middle;
+					}
+
+					path.roadcrew_sign_background {
+						fill: #E87600;
+					}
+
+					path.roadcrew_sign_border {
+						stroke: black;
+						stroke-width: 4;
+						fill: none;
+					}
+
+					line.offset {
+						stroke: red;
+						stroke-width: 2;
+						stroke-dasharray: 2,1;
+					}
+
+					circle.offset {
+						fill: black;
+					}
+
+					path.lock {
+						stroke: none;
+						stroke-width: 1;
+						fill: darkred;
+					}
+
+					path.lock_shackle {
+						stroke: darkred;
+						stroke-width: 4;
+						fill: none;
+					}
+
+					rect.Town_coords {
+						fill: White;
+						stroke-width:2;
+						stroke: black;
+						fill-opacity:1;
+						stroke-opacity:.1;
+					}
+
+					rect.citylist {
+						fill: White;
+						stroke-width:2;
+						stroke: black;
+						fill-opacity:1;
+						stroke-opacity:1;
+					}
+
+					text.Town_coords {
+						font-size: 17px;
+						fill: Black;
+						text-anchor:middle;
+					}
+
+					text.Town_coords_name {
+						font-size: 17px;
+						font-weight: bold;
+						fill: black;
+						text-anchor: middle;
+					}
+
+					rect.toggleButton {
+						fill: #E87600;
+					}
+					
+					.draggable {
+        		cursor: move;
+      		}
+				
+			</style><script type="text/ecmascript" xlink:type="simple" xlink:show="other" xlink:actuate="onLoad">
+
+					var transMatrix = [.5,0,0,.5,12,-200];					
+					var selectedElement = 0;
+					var currentX = 0;
+					var currentY = 0;
+					var currentMatrix = 0;
+
+					function selectElement(evt) {
+						selectedElement = evt.target;
+						currentX = evt.clientX;
+						currentY = evt.clientY;
+						currentMatrix = selectedElement.getAttributeNS(null, "transform").slice(7,-1).split(' ');
+		
+						for(var i=0; i&lt;currentMatrix.length; i++) {
+							currentMatrix[i] = parseFloat(currentMatrix[i]);
+						}
+				
+						selectedElement.setAttributeNS(null, "onmousemove", "moveElement(evt)");
+						selectedElement.setAttributeNS(null, "onmouseout", "deselectElement(evt)");
+						selectedElement.setAttributeNS(null, "onmouseup", "deselectElement(evt)");
+					}
+				
+					function moveElement(evt) {
+						var dx = evt.clientX - currentX;
+						var dy = evt.clientY - currentY;
+						currentMatrix[4] += dx;
+						currentMatrix[5] += dy;
+			
+						selectedElement.setAttributeNS(null, "transform", "matrix(" + currentMatrix.join(' ') + ")");
+						currentX = evt.clientX;
+						currentY = evt.clientY;
+					}
+				
+					function deselectElement(evt) {
+						if(selectedElement != 0){
+							selectedElement.removeAttributeNS(null, "onmousemove");
+							selectedElement.removeAttributeNS(null, "onmouseout");
+							selectedElement.removeAttributeNS(null, "onmouseup");
+							selectedElement = 0;
+						}
+					}
+						
+					function init(evt)
+					{
+						if ( window.svgDocument == null )
+						{
+							svgDoc = evt.target.ownerDocument;
+
+						}
+						            mapMatrix = svgDoc.getElementById("map-matrix");
+												width  = evt.target.getAttributeNS(null, "width");
+												height = evt.target.getAttributeNS(null, "height");
+					}
+						
+	        function pan(dx, dy)
+					{
+
+						transMatrix[4] += dx;
+						transMatrix[5] += dy;
+
+						newMatrix = "matrix(" +  transMatrix.join(' ') + ")";
+						mapMatrix.setAttributeNS(null, "transform", newMatrix);
+					}
+										
+					function zoom(size)
+					{
+						for (var i=0; i&lt;transMatrix.length; i++)
+						{
+							transMatrix[i] *= size;
+						}
+									transMatrix[4] += (1-size)*width/2;
+									transMatrix[5] += (1-size)*height/2;
+
+									newMatrix = "matrix(" +  transMatrix.join(' ') + ")";
+									mapMatrix.setAttributeNS(null, "transform", newMatrix);
+					}
+
+					function show_Town_coords(evt, x, y, scale, name)
+					{
+						Town_coords_name.textContent = name;
+						Town_coords_overworld.textContent = (x) + "," + (y);
+						Town_coords.setAttribute("transform", "translate(" + ( x * scale)+ "," + (y * scale + 34) + ")");
+						Town_coords.setAttributeNS(null, "visibility", "visible");
+					}
+
+					function hide_Town_coords()
+					{
+						Town_coords.setAttributeNS(null, "visibility", "hidden");
+					}
+
+					function show_Town_coords_citylist(evt, x, y, name,c,r)
+					{
+						Town_coords_name_citylist.textContent = name;
+						Town_coords_overworld_citylist.textContent = (x) + "," + (y);
+						Town_coords_citylist.setAttribute("transform", "translate(" + c + "," + (r + 34) + ")");
+						Town_coords_citylist.setAttributeNS(null, "visibility", "visible");
+					}
+
+					function hide_Town_coords_citylist()
+					{
+						Town_coords_citylist.setAttributeNS(null, "visibility", "hidden");
+					}
+
+					function toggleVisibility()
+					{
+						var road_historic = document.getElementById("road_historic");
+						road_historic.style.display = "";
+						if(road_historic.style.visibility == "hidden" ) {
+							road_historic.style.visibility = "visible";
+						}else{
+							road_historic.style.visibility = "hidden";
+						}
+
+						var invert1 = document.getElementById("invert1");
+						invert1.style.display = "";
+						if(invert1.style.stroke == "white" ) {
+							invert1.style.stroke = "black";
+						}else{
+							invert1.style.stroke = "white";
+						}
+
+						var invert2 = document.getElementById("invert2");
+						invert2.style.display = "";
+						if(invert2.style.stroke == "black" ) {
+							invert2.style.stroke = "white";
+						}else{
+							invert2.style.stroke = "black";
+						}
+					}
+
+					function toggleVisibilityUnofficial()
+					{
+						var road_historic = document.getElementById("road_unofficial");
+						road_historic.style.display = "";
+						if(road_historic.style.visibility == "hidden" ) {
+							road_historic.style.visibility = "visible";
+						}else{
+							road_historic.style.visibility = "hidden";
+						}
+
+						var invert1 = document.getElementById("invert5");
+						invert1.style.display = "";
+						if(invert1.style.stroke == "white" ) {
+							invert1.style.stroke = "black";
+						}else{
+							invert1.style.stroke = "white";
+						}
+
+						var invert2 = document.getElementById("invert6");
+						invert2.style.display = "";
+						if(invert2.style.stroke == "black" ) {
+							invert2.style.stroke = "white";
+						}else{
+							invert2.style.stroke = "black";
+						}
+					}
+
+					function toggleVisibilityUninhabited()
+					{
+						var road_historic = document.getElementById("town_uninhabited");
+						road_historic.style.display = "";
+						if(road_historic.style.visibility == "hidden" ) {
+							road_historic.style.visibility = "visible";
+						}else{
+							road_historic.style.visibility = "hidden";
+						}
+
+						var invert1 = document.getElementById("invert7");
+						invert1.style.display = "";
+						if(invert1.style.stroke == "white" ) {
+							invert1.style.stroke = "black";
+						}else{
+							invert1.style.stroke = "white";
+						}
+
+						var invert2 = document.getElementById("invert8");
+						invert2.style.display = "";
+						if(invert2.style.stroke == "black" ) {
+							invert2.style.stroke = "white";
+						}else{
+							invert2.style.stroke = "black";
+						}
+					}
+
+					function toggleVisibilitycitylist()
+					{
+						document.getElementById("citylist").style.display = "";
+						if(document.getElementById("citylist").style.visibility == "hidden" ) {
+							document.getElementById("citylist").style.visibility = "visible";
+						}else{
+							document.getElementById("citylist").style.visibility = "hidden";
+						}
+
+						document.getElementById("invert3").style.display = "";
+						if(document.getElementById("invert3").style.stroke == "white" ) {
+							document.getElementById("invert3").style.stroke = "black";
+						}else{
+							document.getElementById("invert3").style.stroke = "white";
+						}
+
+						document.getElementById("invert4").style.display = "";
+						if(document.getElementById("invert4").style.stroke == "black" ) {
+							document.getElementById("invert4").style.stroke = "white";
+						}else{
+							document.getElementById("invert4").style.stroke = "black";
+						}
+					}
+					
+			</script><defs><filter id="dropshadow" height="130%" xlink:type="simple" xlink:show="other" xlink:actuate="onLoad"><feGaussianBlur in="SourceAlpha" stdDeviation="2"/><feOffset dx="2" dy="2" result="offsetblur"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect style="stroke: none; stroke-width:2; fill:white" x="1" y="1" width="1022" height="598"/><g id="map-matrix" transform="matrix(.5 0 0 .5 12 -200)" onmousedown="selectElement(evt)"><rect style="fill:white" x="0" y="0" height="2000" width="2000"/><g transform="translate(1000,1000)"><circle class="map" r="1000"/><g id="island"><polygon class="island" points="400,-400 400,0 0,400 -400,-200 "/></g><g id="ocean"><polygon class="ocean" points="0,0 100,0 100,100 0,100 "/></g><g id="river"><polyline class="river" points="0,0 500,700 "/></g><circle class="mapborder" r="1000"/><line style="stroke:gray;stroke-width:1" x1="900" y1="1000" x2="900" y2="-1000"/><line style="stroke:gray;stroke-width:1" x1="-900" y1="1000" x2="-900" y2="-1000"/><line style="stroke:gray;stroke-width:1" y1="900" x1="1000" y2="900" x2="-1000"/><line style="stroke:gray;stroke-width:1" y1="-900" x1="1000" y2="-900" x2="-1000"/><text class="range" transform="translate(-5,-975)" x="900">9000</text><text class="range" transform="translate(-5,995)" x="900">9000</text><text class="range_v" transform="translate(995,-5)" y="900">9000</text><text class="range_v" transform="translate(-905,-5)" y="900">9000</text><text class="range" transform="translate(-5,-975)" x="-900">-9000</text><text class="range" transform="translate(-5,995)" x="-900">-9000</text><text class="range_v" transform="translate(995,-5)" y="-900">-9000</text><text class="range_v" transform="translate(-905,-5)" y="-900">-9000</text><line style="stroke:gray;stroke-width:1" x1="800" y1="1000" x2="800" y2="-1000"/><line style="stroke:gray;stroke-width:1" x1="-800" y1="1000" x2="-800" y2="-1000"/><line style="stroke:gray;stroke-width:1" y1="800" x1="1000" y2="800" x2="-1000"/><line style="stroke:gray;stroke-width:1" y1="-800" x1="1000" y2="-800" x2="-1000"/><text class="range" transform="translate(-5,-975)" x="800">8000</text><text class="range" transform="translate(-5,995)" x="800">8000</text><text class="range_v" transform="translate(995,-5)" y="800">8000</text><text class="range_v" transform="translate(-905,-5)" y="800">8000</text><text class="range" transform="translate(-5,-975)" x="-800">-8000</text><text class="range" transform="translate(-5,995)" x="-800">-8000</text><text class="range_v" transform="translate(995,-5)" y="-800">-8000</text><text class="range_v" transform="translate(-905,-5)" y="-800">-8000</text><line style="stroke:gray;stroke-width:1" x1="700" y1="1000" x2="700" y2="-1000"/><line style="stroke:gray;stroke-width:1" x1="-700" y1="1000" x2="-700" y2="-1000"/><line style="stroke:gray;stroke-width:1" y1="700" x1="1000" y2="700" x2="-1000"/><line style="stroke:gray;stroke-width:1" y1="-700" x1="1000" y2="-700" x2="-1000"/><text class="range" transform="translate(-5,-975)" x="700">7000</text><text class="range" transform="translate(-5,995)" x="700">7000</text><text class="range_v" transform="translate(995,-5)" y="700">7000</text><text class="range_v" transform="translate(-905,-5)" y="700">7000</text><text class="range" transform="translate(-5,-975)" x="-700">-7000</text><text class="range" transform="translate(-5,995)" x="-700">-7000</text><text class="range_v" transform="translate(995,-5)" y="-700">-7000</text><text class="range_v" transform="translate(-905,-5)" y="-700">-7000</text><line style="stroke:gray;stroke-width:1" x1="600" y1="1000" x2="600" y2="-1000"/><line style="stroke:gray;stroke-width:1" x1="-600" y1="1000" x2="-600" y2="-1000"/><line style="stroke:gray;stroke-width:1" y1="600" x1="1000" y2="600" x2="-1000"/><line style="stroke:gray;stroke-width:1" y1="-600" x1="1000" y2="-600" x2="-1000"/><text class="range" transform="translate(-5,-975)" x="600">6000</text><text class="range" transform="translate(-5,995)" x="600">6000</text><text class="range_v" transform="translate(995,-5)" y="600">6000</text><text class="range_v" transform="translate(-905,-5)" y="600">6000</text><text class="range" transform="translate(-5,-975)" x="-600">-6000</text><text class="range" transform="translate(-5,995)" x="-600">-6000</text><text class="range_v" transform="translate(995,-5)" y="-600">-6000</text><text class="range_v" transform="translate(-905,-5)" y="-600">-6000</text><line style="stroke:gray;stroke-width:1" x1="500" y1="1000" x2="500" y2="-1000"/><line style="stroke:gray;stroke-width:1" x1="-500" y1="1000" x2="-500" y2="-1000"/><line style="stroke:gray;stroke-width:1" y1="500" x1="1000" y2="500" x2="-1000"/><line style="stroke:gray;stroke-width:1" y1="-500" x1="1000" y2="-500" x2="-1000"/><text class="range" transform="translate(-5,-975)" x="500">5000</text><text class="range" transform="translate(-5,995)" x="500">5000</text><text class="range_v" transform="translate(995,-5)" y="500">5000</text><text class="range_v" transform="translate(-905,-5)" y="500">5000</text><text class="range" transform="translate(-5,-975)" x="-500">-5000</text><text class="range" transform="translate(-5,995)" x="-500">-5000</text><text class="range_v" transform="translate(995,-5)" y="-500">-5000</text><text class="range_v" transform="translate(-905,-5)" y="-500">-5000</text><line style="stroke:gray;stroke-width:1" x1="400" y1="1000" x2="400" y2="-1000"/><line style="stroke:gray;stroke-width:1" x1="-400" y1="1000" x2="-400" y2="-1000"/><line style="stroke:gray;stroke-width:1" y1="400" x1="1000" y2="400" x2="-1000"/><line style="stroke:gray;stroke-width:1" y1="-400" x1="1000" y2="-400" x2="-1000"/><text class="range" transform="translate(-5,-975)" x="400">4000</text><text class="range" transform="translate(-5,995)" x="400">4000</text><text class="range_v" transform="translate(995,-5)" y="400">4000</text><text class="range_v" transform="translate(-905,-5)" y="400">4000</text><text class="range" transform="translate(-5,-975)" x="-400">-4000</text><text class="range" transform="translate(-5,995)" x="-400">-4000</text><text class="range_v" transform="translate(995,-5)" y="-400">-4000</text><text class="range_v" transform="translate(-905,-5)" y="-400">-4000</text><line style="stroke:gray;stroke-width:1" x1="300" y1="1000" x2="300" y2="-1000"/><line style="stroke:gray;stroke-width:1" x1="-300" y1="1000" x2="-300" y2="-1000"/><line style="stroke:gray;stroke-width:1" y1="300" x1="1000" y2="300" x2="-1000"/><line style="stroke:gray;stroke-width:1" y1="-300" x1="1000" y2="-300" x2="-1000"/><text class="range" transform="translate(-5,-975)" x="300">3000</text><text class="range" transform="translate(-5,995)" x="300">3000</text><text class="range_v" transform="translate(995,-5)" y="300">3000</text><text class="range_v" transform="translate(-905,-5)" y="300">3000</text><text class="range" transform="translate(-5,-975)" x="-300">-3000</text><text class="range" transform="translate(-5,995)" x="-300">-3000</text><text class="range_v" transform="translate(995,-5)" y="-300">-3000</text><text class="range_v" transform="translate(-905,-5)" y="-300">-3000</text><line style="stroke:gray;stroke-width:1" x1="200" y1="1000" x2="200" y2="-1000"/><line style="stroke:gray;stroke-width:1" x1="-200" y1="1000" x2="-200" y2="-1000"/><line style="stroke:gray;stroke-width:1" y1="200" x1="1000" y2="200" x2="-1000"/><line style="stroke:gray;stroke-width:1" y1="-200" x1="1000" y2="-200" x2="-1000"/><text class="range" transform="translate(-5,-975)" x="200">2000</text><text class="range" transform="translate(-5,995)" x="200">2000</text><text class="range_v" transform="translate(995,-5)" y="200">2000</text><text class="range_v" transform="translate(-905,-5)" y="200">2000</text><text class="range" transform="translate(-5,-975)" x="-200">-2000</text><text class="range" transform="translate(-5,995)" x="-200">-2000</text><text class="range_v" transform="translate(995,-5)" y="-200">-2000</text><text class="range_v" transform="translate(-905,-5)" y="-200">-2000</text><line style="stroke:gray;stroke-width:1" x1="100" y1="1000" x2="100" y2="-1000"/><line style="stroke:gray;stroke-width:1" x1="-100" y1="1000" x2="-100" y2="-1000"/><line style="stroke:gray;stroke-width:1" y1="100" x1="1000" y2="100" x2="-1000"/><line style="stroke:gray;stroke-width:1" y1="-100" x1="1000" y2="-100" x2="-1000"/><text class="range" transform="translate(-5,-975)" x="100">1000</text><text class="range" transform="translate(-5,995)" x="100">1000</text><text class="range_v" transform="translate(995,-5)" y="100">1000</text><text class="range_v" transform="translate(-905,-5)" y="100">1000</text><text class="range" transform="translate(-5,-975)" x="-100">-1000</text><text class="range" transform="translate(-5,995)" x="-100">-1000</text><text class="range_v" transform="translate(995,-5)" y="-100">-1000</text><text class="range_v" transform="translate(-905,-5)" y="-100">-1000</text><line style="stroke:gray;stroke-width:1" x1="0" y1="1000" x2="0" y2="-1000"/><line style="stroke:gray;stroke-width:1" x1="0" y1="1000" x2="0" y2="-1000"/><line style="stroke:gray;stroke-width:1" y1="0" x1="1000" y2="0" x2="-1000"/><line style="stroke:gray;stroke-width:1" y1="0" x1="1000" y2="0" x2="-1000"/><text class="range" transform="translate(-5,-975)" x="0">0</text><text class="range" transform="translate(-5,995)" x="0">0</text><text class="range_v" transform="translate(995,-5)" y="0">0</text><text class="range_v" transform="translate(-905,-5)" y="0">0</text><text class="range" transform="translate(-5,-975)" x="0">0</text><text class="range" transform="translate(-5,995)" x="0">0</text><text class="range_v" transform="translate(995,-5)" y="0">0</text><text class="range_v" transform="translate(-905,-5)" y="0">0</text><line style="stroke:gray;stroke-width:2" x1="0" y1="1000" x2="0" y2="-1000"/><line style="stroke:gray;stroke-width:2" y1="0" x1="1000" y2="0" x2="-1000"/><rect style="stroke: gray; stroke-width:1; fill:none" x="-1000" y="-1000" height="2000" width="2000"/></g><g transform="translate(1000,1000)"><g id="road_offical"><polyline class="road" points="0,0 100,100 100,300 "/></g><g id="road_unofficial" style="visibility: hidden;"><polyline class="road_unofficial" points="0,0 100,500 "/></g><g id="road_historic" style="visibility: hidden;"><polyline class="road_historic" points="0,0 100,200 "/></g><g id="railline"><polyline class="rail" points="0,0 200,300 " stroke="black"/></g><g id="road_canal"><polyline class="canal" points="0,0 400,200 "/></g><g id="town_inhabited"><g onmouseout="hide_Town_coords()" transform="translate(-37.5,-200)" onmousemove="show_Town_coords(evt,-375,-2000,0.1,&quot;New Pepino&quot;)"><circle r="16" class="Town"/><text y="5" class="Town">NP</text></g><g onmouseout="hide_Town_coords()" transform="translate(52.7,-68.3)" onmousemove="show_Town_coords(evt,527,-683,0.1,&quot;Atlantis&quot;)"><circle r="16" class="Town"/><g transform="translate(-16,-16) scale(.4)"><circle r="16" class="griefed"/><text y="10" class="griefed">!</text></g><g transform="translate(8,-18) scale(.4)"><path class="lock" d="M0 0 L 28 0 L 28 20 L 0 20 Z"/><path class="lock_shackle" d="M6 0 L 6 -7 Q 14 -20 22 -7 L 22 0"/>
+										f
+									</g><text y="5" class="Town_small">Atl</text></g></g><g id="town_uninhabited" style="visibility: hidden;"><g onmouseout="hide_Town_coords()" transform="translate(50.5,32.1)" onmousemove="show_Town_coords(evt,505,321,0.1,&quot;Agraria&quot;)"><circle r="16" class="Town_Uninhabited"/><g transform="translate(8,-18) scale(.4)"><path class="lock" d="M0 0 L 28 0 L 28 20 L 0 20 Z"/><path class="lock_shackle" d="M6 0 L 6 -7 Q 14 -20 22 -7 L 22 0"/>
+										f
+									</g><text y="5" class="Town_small">Agr</text></g><g onmouseout="hide_Town_coords()" transform="translate(-53.7,-41.7)" onmousemove="show_Town_coords(evt,-537,-417,0.1,&quot;Alpha Sierra&quot;)"><circle r="16" class="Town_Uninhabited"/><g transform="translate(-16,-16) scale(.4)"><circle r="16" class="griefed"/><text y="10" class="griefed">!</text></g><g transform="translate(8,-18) scale(.4)"><path class="lock" d="M0 0 L 28 0 L 28 20 L 0 20 Z"/><path class="lock_shackle" d="M6 0 L 6 -7 Q 14 -20 22 -7 L 22 0"/>
+										f
+									</g><text y="5" class="Town">AS</text></g></g><g id="Town_coords" visibility="hidden"><rect class="Town_coords" x="-100" y="-17" width="200" height="55" filter="url(#dropshadow)"/><text class="Town_coords_name" y="5" id="Town_coords_name">Unknown</text><text class="Town_coords" y="28" id="Town_coords_overworld">O: 0,0</text></g></g><script type="text/ecmascript" xlink:type="simple" xlink:show="other" xlink:actuate="onLoad">
+				
+					Town_coords = document.getElementById('Town_coords');
+					Town_coords_overworld = document.getElementById('Town_coords_overworld');
+					Town_coords_name = document.getElementById('Town_coords_name');
+				
+				</script></g><g transform="translate(30,30)" filter="url(#dropshadow)"><g transform="translate(69,69) scale(.3)" filter="url(#dropshadow)"><path class="roadcrew_sign_background" d="M-200 0 L0 200 L200 0 L0 -200 Z"/><path transform="scale(0.97)" class="roadcrew_sign_border" d="M-190 -10 Q -200 0 -190 10 L -10 190 Q 0 200 10 190 L 190 10 Q 200 0 190 -10 L 10 -190 Q 0 -200 -10 -190 Z"/><g transform="translate(0,-45)"><text class="roadcrew_sign"><tspan x="0" y="25">CIVCRAFT</tspan><tspan x="0" y="85">ROADCREW</tspan></text></g></g><g transform="translate(19,-22)"><path class="button" onclick="pan( 0, 50)" d="M50 10 l12   20 a40, 70 0 0,0 -24,  0z"/></g><g transform="translate(-22,19)"><path class="button" onclick="pan( 50, 0)" d="M10 50 l20  -12 a70, 40 0 0,0   0, 24z"/></g><g transform="translate(19,60)"><path class="button" onclick="pan( 0,-50)" d="M50 90 l12  -20 a40, 70 0 0,1 -24,  0z"/></g><g transform="translate(60,19)"><path class="button" onclick="pan(-50, 0)" d="M90 50 l-20 -12 a70, 40 0 0,1   0, 24z"/></g><circle class="button" cx="69" cy="103" r="8" onclick="zoom(0.8)"/><circle class="button" cx="69" cy="35" r="8" onclick="zoom(1.25)"/><rect class="plus-minus" x="65" y="101.5" width="8" height="3"/><rect class="plus-minus" x="65" y="33.5" width="8" height="3"/><rect class="plus-minus" x="67.5" y="31" width="3" height="8"/></g><g transform="translate(925,65) scale(1)"><g transform="translate(1, 140)" onclick="toggleVisibility();" filter="url(#dropshadow)"><rect class="toggleButton" x="-50" y="-25" width="100" height="50"/><rect style="stroke: black; stroke-width:2; fill:none" x="-48" y="-23" width="96" height="46"/><g id="invert1" style="stroke: white"><line x1="-50" y1="-25" x2="49" y2="-25" stroke-width="1"/><line x1="-50" y1="-25" x2="-50" y2="24" stroke-width="1"/></g><g id="invert2" style="stroke: black"><line x1="50" y1="-25" x2="50" y2="25" stroke-width="1"/><line x1="-50" y1="25" x2="50" y2="25" stroke-width="1"/></g><g><text class="scale"><tspan x="-30" y="-7">Show</tspan><tspan x="-30" y="5">Historic</tspan><tspan x="-30" y="17">Roads</tspan></text></g></g><g transform="translate(0, 0)" onclick="toggleVisibilitycitylist();" filter="url(#dropshadow)"><rect class="toggleButton" x="-50" y="-25" width="100" height="50"/><rect style="stroke: black; stroke-width:2; fill:none" x="-48" y="-23" width="96" height="46"/><g id="invert3" style="stroke: white"><line x1="-50" y1="-25" x2="49" y2="-25" stroke-width="1"/><line x1="-50" y1="-25" x2="-50" y2="24" stroke-width="1"/></g><g id="invert4" style="stroke: black"><line x1="50" y1="-25" x2="50" y2="25" stroke-width="1"/><line x1="-50" y1="25" x2="50" y2="25" stroke-width="1"/></g><g><text class="scale"><tspan x="-30" y="-2">Show</tspan><tspan x="-30" y="12">City List</tspan><tspan x="-30" y="17"/></text></g></g><g transform="translate(0, 70)" onclick="toggleVisibilityUnofficial();" filter="url(#dropshadow)"><rect class="toggleButton" x="-50" y="-25" width="100" height="50"/><rect style="stroke: black; stroke-width:2; fill:none" x="-48" y="-23" width="96" height="46"/><g id="invert5" style="stroke: white"><line x1="-50" y1="-25" x2="49" y2="-25" stroke-width="1"/><line x1="-50" y1="-25" x2="-50" y2="24" stroke-width="1"/></g><g id="invert6" style="stroke: black"><line x1="50" y1="-25" x2="50" y2="25" stroke-width="1"/><line x1="-50" y1="25" x2="50" y2="25" stroke-width="1"/></g><g><text class="scale"><tspan x="-30" y="-7">Show</tspan><tspan x="-30" y="5">Unofficial</tspan><tspan x="-30" y="17">Roads</tspan></text></g></g><g transform="translate(0, 210)" onclick="toggleVisibilityUninhabited();" filter="url(#dropshadow)"><rect class="toggleButton" x="-50" y="-25" width="100" height="50"/><rect style="stroke: black; stroke-width:2; fill:none" x="-48" y="-23" width="96" height="46"/><g id="invert7" style="stroke: white"><line x1="-50" y1="-25" x2="49" y2="-25" stroke-width="1"/><line x1="-50" y1="-25" x2="-50" y2="24" stroke-width="1"/></g><g id="invert8" style="stroke: black"><line x1="50" y1="-25" x2="50" y2="25" stroke-width="1"/><line x1="-50" y1="25" x2="50" y2="25" stroke-width="1"/></g><g><text class="scale"><tspan x="-43" y="-7">Show</tspan><tspan x="-43" y="5">Uninhabited</tspan><tspan x="-43" y="17">Towns</tspan></text></g></g></g><g id="citylist" transform="translate(230, 70) scale(1)" style="visibility: hidden;"><rect x="-30" y="-30" height="490" class="citylist" filter="url(#dropshadow)" width="630"/><g onmouseout="hide_Town_coords_citylist()" onmousemove="show_Town_coords_citylist(evt,-375,-2000,&quot;New Pepino&quot;,0,0)" transform="translate(0,0)"><circle r="16" class="Town"/><text y="5" class="Town">NP</text><text class="Town_name" x="25" y="5">New Pepino</text></g><g onmouseout="hide_Town_coords_citylist()" onmousemove="show_Town_coords_citylist(evt,527,-683,&quot;Atlantis&quot;,0,36)" transform="translate(0,36)"><circle r="16" class="Town"/><g transform="translate(-16,-16) scale(.4)" filter="url(#dropshadow)"><circle r="16" class="griefed"/><text y="10" class="griefed">!</text></g><g transform="translate(8,-16) scale(.4)" filter="url(#dropshadow)"><path class="lock" d="M0 0 L 28 0 L 28 20 L 0 20 Z"/><path class="lock_shackle" d="M6 0 L 6 -7 Q 14 -20 22 -7 L 22 0"/></g><text y="5" class="Town_small">Atl</text><text class="Town_name" x="25" y="5">Atlantis</text></g></g><g transform="translate(512, 585)"><rect style="fill: #E87600;" x="-205" y="-18" width="410" height="25" filter="url(#dropshadow)"/><rect style="stroke: black; stroke-width:2; fill:none" x="-202" y="-16" width="405" height="21"/><a xlink:href="http://www.reddit.com/r/CivcraftRoads" target="_blank" xlink:type="simple" xlink:show="replace" xlink:actuate="onRequest"><text class="link">
+						w w w . r e d d i t . c o m / r / C i v c r a f t R o a
+						d s
+					</text></a></g><g id="citylist" transform="translate(230, 70) scale(1)" style="visibility: hidden;"><g id="Town_coords_citylist" visibility="hidden"><rect class="Town_coords" x="-100" y="-17" width="200" height="55" filter="url(#dropshadow)"/><text class="Town_coords_name" y="5" id="Town_coords_name_citylist">Unknown</text><text class="Town_coords" y="28" id="Town_coords_overworld_citylist">
+					O: 	0,0
+					</text></g><script type="text/ecmascript" xlink:type="simple" xlink:show="other" xlink:actuate="onLoad">
+					
+						Town_coords_citylist = document.getElementById('Town_coords_citylist');
+						Town_coords_overworld_citylist = document.getElementById('Town_coords_overworld_citylist');
+						Town_coords_name_citylist = document.getElementById('Town_coords_name_citylist');
+					
+				</script></g><g transform="translate(512, 40)"><rect style="fill: #E87600;" x="-150" y="-26" width="300" height="34" filter="url(#dropshadow)"/><rect style="stroke: black; stroke-width:2; fill:none" x="-148" y="-24" width="296" height="30"/><text class="title"><tspan x="0" y="0">CIVCRAFT ROAD MAP</tspan></text></g><rect style="stroke: black; stroke-width:2; fill:none" x="1" y="1" width="1022" height="598"/></svg>
