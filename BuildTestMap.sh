@@ -3,6 +3,6 @@
 #generates testing map svg
 #use GenerateAndPublish.sh to deploy new maps
 #
-#depends- xalan
+#depends- xsltproc
 
-xalan -in map.xml -xsl map.xslt -out TestMap.svg
+xsltproc -novalid -o TestMap.svg map.xslt map.xml
